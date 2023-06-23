@@ -1,4 +1,4 @@
-#
+git remote add origin https://github.com/Pratima2001/EpubEase.git#
 # Generated file, do not edit.
 #
 

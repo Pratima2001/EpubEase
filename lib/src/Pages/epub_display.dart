@@ -267,8 +267,8 @@ class Home extends State<ShowEpub> {
                                         builder: (BuildContext context,
                                                 StateSetter setState) =>
                                             Theme(
-                                          data: Theme.of(context).copyWith(
-                                              canvasColor: Colors.white),
+                                          data: Theme.of(context)
+                                              .copyWith(canvasColor: bag),
                                           child: DropdownButtonHideUnderline(
                                             child: DropdownButton<String>(
                                                 value: selectedFont,
@@ -297,8 +297,7 @@ class Home extends State<ShowEpub> {
                                                                         font
                                                                     ? const Color(
                                                                         0xffcc2b73)
-                                                                    : Colors
-                                                                        .black,
+                                                                    : fontc,
                                                             fontWeight:
                                                                 selectedFont ==
                                                                         font
