@@ -1,39 +1,54 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# EpubEase
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+EpubEase is a Flutter package that allows users to open and read EPUB files easily. It provides features like opening EPUB files from assets or URLs, changing themes, adjusting font styles and sizes, accessing chapter contents, and more.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Open EPUB files from assets or URLs
+- Change themes with 5 options: Grey, Purple, White, Black, and Pink
+- Customize font style and size
+- Access table of contents and navigate to specific chapters
+- Display current chapter name at the bottom of the screen
+- Previous and next buttons to switch between chapters
+- Adjust screen brightness
 
-## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
-## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## Getting Started #
 
-```dart
-const like = 'sample';
-```
+In your flutter project add the dependency:
 
-## Additional information
+   ```yaml
+   dependencies:
+     epub_ease: ^1.0.0
+   ```  
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Run the command:
+
+   ```yaml
+   flutter pub get
+   ```    
+For more information, check out the [documentation](https://flutter.dev/).
+   
+## Usage example
+Import the package in your Dart code:
+
+   ```yaml
+   import 'package:epub_ease/epub_ease.dart';
+   ```  
+To open an EPUB file from the assets, use the openAsset method:
+
+   ```yaml
+   EpubEase().openAsset('path_to_asset.epub', context);
+   ```  
+To open an EPUB file from a URL, use the open method:
+
+   ```yaml
+  EpubEase().open('epub_url', context);
+   ```  
+## Demo
+[![Video Title](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://github.com/Pratima2001/EpubEase/blob/main/demo/Screenrecorder-2023-06-23-20-01-27-863.mp4)
+
+
+
