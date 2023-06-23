@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Model/Chaptermodel.dart';
+import '../Model/chapter_model.dart';
 import 'epub_display.dart';
 
 // ignore: must_be_immutable
-class chapterslist extends StatelessWidget {
+class ChaptersList extends StatelessWidget {
   List<Chaptermodel> chapters = [];
-  chapterslist({super.key, required this.chapters});
+  ChaptersList({super.key, required this.chapters});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -63,7 +63,7 @@ class chapterslist extends StatelessWidget {
                     ),
                     dense: true,
                   ),
-                  Divider(height: 0, thickness: 1.0),
+                  const Divider(height: 0, thickness: 1.0),
                 ],
               );
             }),

@@ -2,13 +2,12 @@ import 'package:epubx/epubx.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_brightness/screen_brightness.dart';
-import 'package:html/parser.dart' as htmlParser;
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Component/Theme.dart';
-import 'Content.dart';
-import '../Model/Chaptermodel.dart';
+import '../Component/theme.dart';
+import 'content.dart';
+import '../Model/chapter_model.dart';
 
 late String selectedFont;
 String selectedchapter = 'Select chapter';
@@ -24,6 +23,7 @@ class ShowEpub extends StatefulWidget {
   List splithtml = [];
 
   ShowEpub({
+    super.key,
     required this.html1,
     required this.epubBook,
   });
@@ -92,9 +92,10 @@ class Home extends State<ShowEpub> {
         setState(() {});
       }
     });
-    final document = htmlParser.parse(xhtml);
-    final titleElement = document.querySelector('title');
-    booktitle = titleElement?.text ?? '';
+    if (epubBook.Title != null) {
+      booktitle = epubBook.Title!;
+    }
+
     setState(() {});
     showchapter();
   }
@@ -104,10 +105,10 @@ class Home extends State<ShowEpub> {
       String? chapterTitle = chapter.Title;
       selectedchapter = '';
       List<Chaptermodel> subChapters = [];
-      chapter.SubChapters!.forEach((element) {
+      for (var element in chapter.SubChapters!) {
         subChapters
             .add(Chaptermodel(chapter: element.Title!, issubchapter: true));
-      });
+      }
       chapterslist1
           .add(Chaptermodel(chapter: chapterTitle!, issubchapter: false));
       chapterslist1 += subChapters;
@@ -156,7 +157,7 @@ class Home extends State<ShowEpub> {
 
   Future<bool> backpress() async {
     // Navigator.of(context).pop();
-    return await true;
+    return true;
   }
 
   void setBrightness(double brightness) async {
@@ -179,7 +180,7 @@ class Home extends State<ShowEpub> {
         builder: (context) {
           return SingleChildScrollView(
               child: StatefulBuilder(
-                  builder: (BuildContext context, setState) => Container(
+                  builder: (BuildContext context, setState) => SizedBox(
                         height: 170,
                         child: Column(
                           children: [
@@ -280,7 +281,7 @@ class Home extends State<ShowEpub> {
                                                       GoogleFonts.getFont(
                                                               selectedFont)
                                                           .fontFamily!;
-                                                  print(selectedFont);
+
                                                   setState(() {});
                                                   update();
                                                 },
@@ -321,6 +322,9 @@ class Home extends State<ShowEpub> {
                                           ),
                                           Expanded(
                                             child: Slider(
+                                              activeColor: themeid == 4
+                                                  ? Colors.grey.withOpacity(0.8)
+                                                  : Colors.blue,
                                               value: _fontsizeprogress,
                                               min: 0.0,
                                               max: 50.0,
@@ -424,7 +428,7 @@ class Home extends State<ShowEpub> {
                                               });
                                             }
                                           }
-                                          return await true;
+                                          return true;
                                         },
                                         textStyle: TextStyle(
                                             fontSize: _fontsize,
@@ -575,6 +579,7 @@ class Home extends State<ShowEpub> {
                     AnimatedContainer(
                       height: showheader ? 50 : 0,
                       duration: const Duration(milliseconds: 10),
+                      color: bag,
                       child: AppBar(
                         centerTitle: true,
                         title: Text(
@@ -590,7 +595,7 @@ class Home extends State<ShowEpub> {
                           onPressed: () async {
                             bool updatecontent = await Navigator.of(context)
                                 .push(MaterialPageRoute(
-                                    builder: (context) => chapterslist(
+                                    builder: (context) => ChaptersList(
                                           chapters: chapterslist1,
                                         )));
                             if (updatecontent) {
@@ -606,7 +611,6 @@ class Home extends State<ShowEpub> {
                           InkWell(
                               onTap: () {
                                 updatefontsettings();
-                                print(themeid);
                               },
                               child: Container(
                                 width: 40,

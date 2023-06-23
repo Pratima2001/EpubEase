@@ -1,7 +1,7 @@
 name: epubease
-description: A new Flutter package project.
-version: 1.0.0
-homepage:
+description: EpubEase is a Flutter package that allows users to open and read EPUB files easily.
+version: 1.0.4
+homepage: "https://github.com/Pratima2001/EpubEase"
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -15,6 +15,7 @@ dependencies:
   epubx: ^3.0.0
   http: ^1.0.0
   google_fonts: ^5.1.0     
+  
 
 dev_dependencies:
   flutter_test:
