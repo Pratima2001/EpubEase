@@ -47,8 +47,5 @@ To open an EPUB file from a URL, use the open method:
    ```yaml
   EpubEase().open('epub_url', context);
    ```  
-## Demo
-[![Video Title](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://github.com/Pratima2001/EpubEase/blob/main/demo/Screenrecorder-2023-06-23-20-01-27-863.mp4)
-
 
 
