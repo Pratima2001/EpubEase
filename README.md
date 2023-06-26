@@ -21,7 +21,7 @@ In your flutter project add the dependency:
 
    ```yaml
    dependencies:
-     epub_ease: ^1.0.0
+     epubease: ^1.0.0
    ```  
 
 Run the command:
